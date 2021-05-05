@@ -1,0 +1,95 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- budget
+- affirm
+- send_mail
+- restaurant_search
+- deny
+- greet
+- goodbye
+- stop
+entities:
+- cuisine
+- location
+- mail_id
+- price
+slots:
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  price:
+    type: text
+    influence_conversation: true
+  mail_id:
+    type: text
+    influence_conversation: true
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_budget:
+  - buttons:
+    - payload: Lesser than Rs. 300
+      title: Lesser than Rs. 300
+    - payload: Rs. 300 to 700
+      title: Rs. 300 to 700
+    - payload: More than 700
+      title: More than 700
+    text: what is your budget?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_default:
+  - text: i cannot understand
+  utter_goodbye:
+  - text: Goodbye :(
+  - text: Bye-bye
+  - text: Buh Byee
+  utter_greet:
+  - text: Hey there! This is FoodBot here... How may i help you
+  - text: Hi! This is FoodBot here... How can I help you!
+  - text: Hey! This is FoodBot here... How is it going. How May I help you Today
+  utter_check_mail:
+  - text: Would you like your Search results to be mailed to you?
+  utter_ask_mail:
+  - text: Sure thing!! Please share you Email id
+  utter_confirm_mail:
+  - text: An Email has been sent to you!! Enjoy you meal!
+  utter_confirm_all:
+  - text: Is there anything else I can help you with?
+actions:
+- action_search_restaurants
+- action_send_mail
+- action_validate_budget
+- action_validate_city
+- action_validate_cuisine
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail
+- utter_check_mail
+- utter_confirm_all
+- utter_confirm_mail
+- utter_default
+- utter_goodbye
+- utter_greet
